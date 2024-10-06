@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <h1>Dashboards de Monitoramento de Temperatura e Umidade - Larissa Silvério</h1>
+    <div class="chart-container">
+        <canvas id="line-chart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="bar-chart"></canvas>
+    </div>
+    <script>
+        var lineChartContext = document.getElementById('line-chart').getContext('2d');
+        var chart = new Chart(lineChartContext, {
+            type: 'line',
+            data: {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [{
+                    label: 'Temperatura',
+                    data: [30, 29, 28, 25, 22, 23],
+                    backgroundColor: 'rgba(255, 105, 180, 0.5)',
+                    borderColor: 'rgba(255, 105, 180, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Umidade',
+                    data: [80, 82, 80, 85, 80, 83],
+                    backgroundColor: 'rgba(70, 130, 180, 0.5)',
+                    borderColor: 'rgba(70, 130, 180, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Variação de Temperatura e Umidade no Período Vespertino',
+                        font: {
+                            size: 20,
+                            family: 'Arial',
+                        },
+
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var barChartContext = document.getElementById('bar-chart').getContext('2d');
+        var chart2 = new Chart(barChartContext, {
+            type: 'bar',
+            data: {
+                labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+                datasets: [{
+                    label: 'Temperatura Média',
+                    data: [22, 24, 27, 23, 20, 18],
+                    backgroundColor: 'rgba(255, 105, 180, 0.5)',
+                    borderColor: 'rgba(255, 105, 180, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Umidade Média',
+                    data: [90, 89, 93, 87, 88, 82],
+                    backgroundColor: 'rgba(70, 130, 180, 0.5)',
+                    borderColor: 'rgba(70, 130, 180, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Média de Temperatura e Umidade no 1º Semestre',
+                        font: {
+                            size: 20,
+                            family: 'Arial',
+                        },
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
